@@ -16,12 +16,14 @@ export class LoginComponent implements OnInit {
     this.auth.loginUser(this.loginUserData)
       .subscribe(
         res => {
-          console.log(res);
+          console.log('%cToken :)', 'color:green');
+          console.table(res);
           localStorage.setItem('token', res.token);
           this.router.navigate(['/users']);
         },
-        err => console.log(err)
-      );
+        (err) => {
+          console.log(err);
+        });
   }
 
 }

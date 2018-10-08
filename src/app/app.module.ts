@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsersService } from './users/users.service';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
+import { UserComponent } from './user/user.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -20,13 +22,15 @@ import { AuthService } from './auth.service';
     HomeComponent,
     NavbarComponent,
     LoginComponent,
-    UsersComponent
+    UsersComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule.forRoot()
   ],
   providers: [
     AuthService,

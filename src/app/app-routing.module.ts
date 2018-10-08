@@ -4,7 +4,8 @@ import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
-
+import { ResolverService } from './resolver.service';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {
@@ -23,8 +24,21 @@ const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
-    data: {url: 'users'},
+    data: { url: 'users' },
     canActivate: [AuthGuard],
+    resolve: { data: ResolverService },
+
+  },
+  {
+    path: 'users/:id',
+    component: UserComponent,
+    data: { url: 'users' },
+    resolve: { data: ResolverService }
+  },
+  {
+    path: '**',
+    redirectTo: '/home',
+    pathMatch: 'full'
   }
 ];
 
