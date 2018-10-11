@@ -2,11 +2,14 @@
     <div class="col-md-6 mx-auto">
       <div class="card text-center">
         <div class="card-header">
+          <img class="rounded-circle" src="{{user.avatar}}" alt="">
           <h3>{{user.first_name}} {{user.last_name}}</h3>
         </div>
         <div class="card-body">
-          <img class="rounded-circle" src="{{user.avatar}}" alt="">
+          <a class="btn btn-secondary" [routerLink]="['edit']">Edit <i class="far fa-edit"></i></a>
+          <button class="btn btn-danger" (click)="deleteUser(user.id)">Delete <i class="fas fa-user-minus"></i></button>
         </div>
       </div>
     </div>
   </div>
+  

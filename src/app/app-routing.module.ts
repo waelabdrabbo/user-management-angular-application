@@ -6,7 +6,7 @@ import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
 import { ResolverService } from './resolver.service';
 import { UserComponent } from './user/user.component';
-
+import { UserEditComponent } from './user-edit/user-edit.component';
 const routes: Routes = [
   {
     path: '',
@@ -32,6 +32,12 @@ const routes: Routes = [
   {
     path: 'users/:id',
     component: UserComponent,
+    data: { url: 'users' },
+    resolve: { data: ResolverService }
+  },
+  {
+    path: 'users/:id/edit',
+    component: UserEditComponent,
     data: { url: 'users' },
     resolve: { data: ResolverService }
   },

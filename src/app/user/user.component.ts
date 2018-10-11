@@ -20,12 +20,23 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.route['data'].subscribe(
       res => {
-        this.currentUrl = res['url'];
         this.user = res['data']['data'];
+        this.currentUrl = res['url'];
+        console.log(this.currentUrl);
         console.log('%cUser Data Initialized!', 'color:green');
         console.table(this.user);
       }
     );
 
+}
+deleteUser(id: number) {
+  this.usersService.deleteUser(`${id}`).subscribe(
+    res => {
+      console.log('User Deleted!');
+      this.router.navigate(['/users']);
+    }, (err) => {
+      console.log('Cannot Remove this User');
+    }
+  );
 }
 }
